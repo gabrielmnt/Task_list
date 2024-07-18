@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import TaskList from './components/TaskList';
+import TaskForm from './components/TaskForm';
+import TaskModal from './components/TaskModal'; 
+import { addTask, updateTask, deleteTask } from './functions/taskFunctions';
 
-function App() {
+const App = () => {
+  const [tasks, setTasks] = useState([]);
+  const [selectedTask, setSelectedTask] = useState(null);
+
+  const handleAddTask = (task) => {
+    setTasks(addTask(tasks, task));
+  };
+
+  const handleUpdateTask = (updatedTask) => {
+    setTasks(updateTask(tasks, updatedTask));
+  };
+
+  const handleDeleteTask = (taskId) => {
+    setTasks(deleteTask(tasks, taskId));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <h1>Lista de Tarefas</h1>
+      <TaskForm onAddTask={handleAddTask} />
+      <TaskList 
+        tasks={tasks} 
+        onEditTask={setSelectedTask} 
+        onDeleteTask={handleDeleteTask} 
+      />
+      {selectedTask && (
+        <TaskModal 
+          task={selectedTask} 
+          onUpdateTask={handleUpdateTask} 
+          onClose={() => setSelectedTask(null)} 
+        />
+      )}
     </div>
   );
-}
+};
 
 export default App;
