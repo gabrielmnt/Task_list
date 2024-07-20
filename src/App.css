@@ -134,7 +134,7 @@ h1 {
 }
 
 .task button:hover {
-  background: #c82333;
+  background: #28c823;
 }
 
 .modal {
@@ -177,6 +177,7 @@ h1 {
 
   .task {
     padding: 10px 5px;
+    width: 96%;
   }
 
   .task-list {
