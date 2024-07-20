@@ -20,8 +20,9 @@ body {
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  height: 80vh;
+  width: 90%;
+  max-width: 400px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   border: 20px outset #007bff;
@@ -69,16 +70,17 @@ h1 {
 .task-list {
   display: block;
   width: auto;
-  min-height: 20%;
   height: auto;
+  min-height: 20%;
   flex-direction: column;
   align-items: center;
-  background-color:#ddd;
   overflow:auto;
   padding: 10px 10px;
   border-radius: 10px;
+  background-color:#ddd;
   box-shadow: inset 0px 0px 2px 2px rgba(0,0,0,0.2);
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
 }
 
 .task {
@@ -88,7 +90,7 @@ h1 {
   margin-top: 10px;
   margin: 5px 0;
   border-radius: 5px;
-  width: 95%;
+  width: 92%;
   cursor: pointer;
   position: relative;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -139,7 +141,7 @@ h1 {
   border: 10px outset #60adff;
   position: fixed;
   top: 50%;
-  left: 50%;
+  left: 51.5%;
   transform: translate(-50%, -50%);
   background: #fff;
   padding: 20px;
@@ -169,12 +171,20 @@ h1 {
 @media (max-width: 600px) {
   .app-container {
     width: 80vw;
-    height: 80vh;
+    height: 100%;
     border-radius: 0;
   }
 
   .task {
     padding: 10px 5px;
+  }
+
+  .task-list {
+    display: block;
+    width: auto;
+    height: 40vw;
+    max-height: 40%;
+    overflow: scroll;
   }
 
   .task-form input,
